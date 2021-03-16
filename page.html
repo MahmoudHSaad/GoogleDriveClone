@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script> 
+    
+    <link href="./css/page.css" rel="stylesheet" >
+    <title>Google drive </title>
+    <style>
+      @font-face {
+        font-family: "FontAwesome";
+        font-weight: normal;
+        font-style : normal;
+        src : url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.eot");
+        src : url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.eot") format("embedded-opentype"),
+             url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2") format("woff2"),
+             url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff") format("woff"),
+             url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf") format("truetype"),
+             url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.svg") format("svg");
+    }
+    select {
+        font-family: FontAwesome;
+    }
+    </style>
+</head>
+<body>
+
+  <!-- Search Bar ------------------------------------------------------ -->
+  <div class="container-fluid row" >
+  
+
+    <div class="input-group md-form form-sm form-2 pl-0" >
+        <div class="input-group-append">
+            <span  class="input-group-text  " id="basic-text1"style="border-radius:0px 10px 10px 0px ">
+              <i class="fas fa-search fa-flip-horizontal "
+                aria-hidden="true" ></i></span>
+          </div>
+     
+        
+     <input type="text" class="form-control my-0 py-1 " id="myInput" onkeyup="myFunction()"
+      style="border-radius: 10px 0px 0px 10px ; "
+    placeholder="بحث" title="Type in a name" onfocusout="focusOut()" placeholder="بحث"> 
+    <span id="remove" >&times; </span>
+      </div>
+      <!--      option list  --------------------------------------------- -->
+      <ul id="action-list" class="actionlist">
+        <li id="s" value="firstfile">    
+          <i class="fa fa-file-pdf-o actionlisticon" style=" color: #eb4638;"></i> 
+         <a href="#"> محمود.pdf </a> 
+        
+        </li>
+        <li id="s" value="secondfile">    
+          <i class="fa fa-file-word-o actionlisticon" style="color: #664df5;"></i> 
+         <a href="#"> محمود.decx </a> 
+        
+        </li>
+        <li id="s" value="therdfile">    
+          <i class="fas fa-folder fa-flip-horizontal actionlisticon" style=" color: #7b7a7a;"></i> 
+         <a href="#">المجلد الثاني </a> 
+        </li>
+        <li id="s" value="firstfile">    
+          <i class="fas fa-folder fa-flip-horizontal actionlisticon" style=" color: #7b7a7a;"></i> 
+         <a href="#">المجلد الثاني </a> 
+        </li>
+
+      </ul>
+
+    <div class="alert searchBarADS" >
+      <span class="closebtn" onclick="this.parentElement.style.display='none';"
+       style="float: right; cursor: pointer; font-size: 30px;">&times;
+        <strong>الاعلان هنا </strong> 
+      </span> 
+     
+    
+
+    </div>
+</div>
+ <!-- Search Bar ------------------------------------------------------ -->
+
+
+<hr>
+
+<div class=" row"  >
+  <!-- sidBar ----------------------------------------------------------- -->
+    <div class="col-2" >
+        <div class="input-group-prepend">
+
+            
+            <button id="newBu" type="button" class="btn " data-toggle="dropdown" >
+                <img id="newFO" src="./logo1.png"  >
+                <!-- <i class="fas fa-plus " id="newFO">
+                
+                </i>
+        -->
+        جديد
+                <!-- <span id="newLog">    </span> -->
+            </button>
+            <div class="dropdown-menu" style="text-align: right; min-width: 300px; margin-right: 280px;" >
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal">مجلد <i class="fas fa-folder-plus" style="float: right; margin-left: 10px; font-size: 25px;"></i></a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModalUploadFile">تحميل مجلد <i class="fas fa-folder fa-flip-horizontal" style="float: right; margin-left: 10px; font-size: 25px;"></i></a>
+              <a class="dropdown-item" href="#"data-toggle="modal" data-target="#exampleModalUploadFile2">تحميل ملف <i class="fas fa-file-upload" style="float: right; margin-left: 17px; font-size: 25px;"></i></a>
+            </div>
+    </div>
+    <div class="alert1 sidbaralert" >
+      <span class="closebtn" onclick="this.parentElement.style.display='none';" style="cursor: pointer; font-size: 30px;">&times;
+        <strong>الاعلان هنا</strong> 
+      </span> 
+    
+    </div>
+    </div>
+<!-- sidBar ----------------------------------------------------------- -->
+
+<!-- booooooooooooooooooooooooooooooooody------------------------------ -->
+
+ <div class="col-10">
+ <!-- griiiiiiiiiiiiiiiiiiiiiiiiiiiidShow------------------------------ -->
+    <div class="container" class="gridshow" id="gridd" style="height: 80px;  max-width: 90%; float: right;margin-right: 30px; ">
+    <div class="row" style=" padding: 10px; border-bottom: 1px solid rgba(221, 218, 218, 0.568);">
+    <div class="col-6" style="text-align: right; font-size:15px ; font-weight: 700;">
+      <a href="#"><span > الملفات</span></a>
+        <i class="fa fa-angle-left"  style="font-size: 15px; margin-right: 5px ; cursor: pointer;" ></i>
+    
+    </div>
+    <div class="col-6"> <i class="fas fa-list" onclick="pageTow()"id="listB" style="cursor: pointer;"></i>
+    </div>
+  
+
+    </div>
+
+    <div class="row " style=" padding: 10px; padding-right: 50px; margin-top: 10px;">
+        <div class="co1" style="width: 100%;">
+            <div class="row" style="margin-bottom: 1%;"><h5>المجلدات</h5></div>
+            <div class="row">
+              <ul class="listfolder">
+                <li class="floder"> <a href="#"><i class="fas fa-folder fa-flip-horizontal" > </i>ارقام الصفوف </i></a>
+                  <i  class="fas fa-ellipsis-v" style="float: left;" id="dropdownMenuButton" data-toggle="dropdown"></i>
+
+             <div class="dropdown-menu" style="float: right;" >
+           <a class="dropdown-item" href="#" style="text-align: justify;"> <i class="fas fa-eye" style="float: right;"></i>عرض </a>
+           <a class="dropdown-item" href="#" style="text-align: justify;" > <i class="fas fa-cloud-download-alt" style="float: right;"></i>تنزيل</a>
+           <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#RenameFile" style="text-align: justify;" > <i class="fas fa-edit" style="float: right;"></i>تغير الاسم</a>
+          
+           <a class="dropdown-item">               
+                      <div class="dropdown">
+                        <i class="fas fa-copy" style="margin-right: 5px; float: right; "></i>
+                        
+                        <span style="text-align: right; margin-left:36px ;" >نسخ الى       <i class="fas fa-caret-left" style=" font-size: small; float: left; margin: auto; margin-top: 5px;"></i>  </span>
+                        <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%; text-align: center;">
+                          <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                          <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                          <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                        
+                        </div>
+                    
+                      </div> 
+            </a>
+           <a class="dropdown-item">               
+                      <div class="dropdown">
+                        <i class= "fas fa-file-export" style="margin-right: -12px; float: right; "></i>
+                        
+                        <span style="text-align: right; margin-left:36px ;" >نقل الى       <i class="fas fa-caret-left" style=" font-size: small; float: left; margin: auto; margin-top: 5px;"></i>  </span>
+                        <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%;text-align: center;">
+                          <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                          <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                          <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                        
+                        </div>
+                    
+                      </div> 
+            </a>
+
+             
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#" style="text-align: justify;" ><i class="fas fa-trash-alt" style="float: right;" ></i>إزالة</a>
+             </div>
+
+
+                </li>
+                <li class="floder"> <a href="#"><i class="fas fa-folder fa-flip-horizontal" > </i>ارقام الصفوف </i></a>
+                  <i  class="fas fa-ellipsis-v" style="float: left; " id="dropdownMenuButton" data-toggle="dropdown"></i>
+                
+             <div class="dropdown-menu" style="float: right;" >
+              <a class="dropdown-item" href="#" style="text-align: justify;"> <i class="fas fa-eye" style="float: right;"></i>عرض </a>
+              <a class="dropdown-item" href="#" style="text-align: justify;" > <i class="fas fa-cloud-download-alt" style="float: right;"></i>تنزيل</a>
+              <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#RenameFile" style="text-align: justify;" > <i class="fas fa-edit" style="float: right;"></i>تغير الاسم</a>
+             
+              <a class="dropdown-item">               
+                         <div class="dropdown">
+                           <i class="fas fa-copy" style="margin-right: 5px; float: right; "></i>
+                           
+                           <span style="text-align: right; margin-left:36px ;" >نسخ الى       <i class="fas fa-caret-left" style=" font-size: small; float: left; margin: auto; margin-top: 5px;"></i>  </span>
+                           <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%;text-align: center;">
+                             <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                             <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                             <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                           
+                           </div>
+                       
+                         </div> 
+               </a>
+              <a class="dropdown-item">               
+                         <div class="dropdown">
+                           <i class= "fas fa-file-export" style="margin-right: -12px; float: right; "></i>
+                           
+                           <span style="text-align: right; margin-left:36px ;" >نقل الى       <i class="fas fa-caret-left" style=" font-size: small; float: left; margin: auto; margin-top: 5px;"></i>  </span>
+                           <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%; text-align: center;">
+                             <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                             <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                             <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                           
+                           </div>
+                       
+                         </div> 
+               </a>
+   
+                
+                       <div class="dropdown-divider"></div>
+                       <a class="dropdown-item" href="#" style="text-align: justify;" ><i class="fas fa-trash-alt" style="float: right;" ></i>إزالة</a>
+                </div>
+                </li>
+                <li class="floder"> <a href="#"><i class="fas fa-folder fa-flip-horizontal" > </i>ارقام الصفوف </i></a>
+                  <i  class="fas fa-ellipsis-v" style="float: left; " id="dropdownMenuButton" data-toggle="dropdown"></i>
+               
+             <div class="dropdown-menu" style="float: right;" >
+              <a class="dropdown-item" href="#" style="text-align: justify;"> <i class="fas fa-eye" style="float: right;"></i>عرض </a>
+              <a class="dropdown-item" href="#" style="text-align: justify;" > <i class="fas fa-cloud-download-alt" style="float: right;"></i>تنزيل</a>
+              <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#RenameFile" style="text-align: justify;" > <i class="fas fa-edit" style="float: right;"></i>تغير الاسم</a>
+             
+              <a class="dropdown-item">               
+                         <div class="dropdown">
+                           <i class="fas fa-copy" style="margin-right: 5px; float: right; "></i>
+                           
+                           <span style="text-align: right; margin-left:36px ;" >نسخ الى       <i class="fas fa-caret-left" style=" font-size: small; float: left; margin: auto; margin-top: 5px;"></i>  </span>
+                           <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%;text-align: center;">
+                             <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                             <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                             <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                           
+                           </div>
+                       
+                         </div> 
+               </a>
+              <a class="dropdown-item">               
+                         <div class="dropdown">
+                           <i class= "fas fa-file-export" style="margin-right: -12px; float: right; "></i>
+                           
+                           <span style="text-align: right; margin-left:36px ;" >نقل الى       <i class="fas fa-caret-left" style=" font-size: small; float: left; margin: auto; margin-top: 5px;"></i>  </span>
+                           <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%;text-align: center;">
+                             <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                             <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                             <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                           
+                           </div>
+                       
+                         </div> 
+               </a>
+   
+                
+                       <div class="dropdown-divider"></div>
+                       <a class="dropdown-item" href="#" style="text-align: justify;" ><i class="fas fa-trash-alt" style="float: right;" ></i>إزالة</a>
+                </div>
+                </li>
+                <li class="floder"> <a href="#"><i class="fas fa-folder fa-flip-horizontal" > </i>ارقام الصفوف </i></a>
+                  <i  class="fas fa-ellipsis-v" style="float: left; " id="dropdownMenuButton" data-toggle="dropdown"></i>
+        
+         
+                  <div class="dropdown-menu" style="float: right;" >
+                    <a class="dropdown-item" href="#" style="text-align: justify;"> <i class="fas fa-eye" style="float: right;"></i>عرض </a>
+                    <a class="dropdown-item" href="#" style="text-align: justify;" > <i class="fas fa-cloud-download-alt" style="float: right;"></i>تنزيل</a>
+                    <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#RenameFile" style="text-align: justify;" > <i class="fas fa-edit" style="float: right;"></i>تغير الاسم</a>
+                   
+                    <a class="dropdown-item">               
+                               <div class="dropdown">
+                                 <i class="fas fa-copy" style="margin-right: 5px; float: right; "></i>
+                                 
+                                 <span style="text-align: right; margin-left:36px ;" >نسخ الى       <i class="fas fa-caret-left" style=" font-size: small; float: left; margin: auto; margin-top: 5px;"></i>  </span>
+                                 <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%;text-align: center;">
+                                   <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                                   <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                                   <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                                 
+                                 </div>
+                             
+                               </div> 
+                     </a>
+                    <a class="dropdown-item">               
+                               <div class="dropdown">
+                                 <i class= "fas fa-file-export" style="margin-right: -12px; float: right; "></i>
+                                 
+                                 <span style="text-align: right; margin-left:36px ;" >نقل الى       <i class="fas fa-caret-left" style=" font-size: small; float: left; margin: auto; margin-top: 5px;"></i>  </span>
+                                 <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%;text-align: center;">
+                                   <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                                   <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                                   <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                                 
+                                 </div>
+                             
+                               </div> 
+                     </a>
+         
+                      
+                             <div class="dropdown-divider"></div>
+                             <a class="dropdown-item" href="#" style="text-align: justify;" ><i class="fas fa-trash-alt" style="float: right;" ></i>إزالة</a>
+                      </div>
+                </li>
+        
+           
+               
+           
+           
+              </ul>
+
+   
+
+            </div>
+        </div>
+
+      
+      </div>
+    <div class="row" >
+      
+   
+      <div class="card-deck" >
+      
+        <h5 class="folderCard" style="margin-right:4.8%; width: 100%; text-align: right; margin-bottom: 10px;"  > الملفات     </h5>
+       
+        <ul class="grid" style="display: block;">
+          <li class="gridlist" style="display: inline-block; height: 210px; " >
+
+
+        <div class="card" style="height: 100%;">
+          <i  class="fas fa-ellipsis-v" style=" position: absolute; margin-right: 85%;" id="dropdownMenuButton" data-toggle="dropdown"></i>
+
+          <div class="dropdown-menu" style="float: right;" >
+        <a class="dropdown-item" href="#" style="text-align: justify;"> <i class="fas fa-eye" style="float: right;"></i>عرض </a>
+        <a class="dropdown-item" href="#" style="text-align: justify;" > <i class="fas fa-cloud-download-alt" style="float: right;"></i>تنزيل</a>
+        <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#RenameFile" style="text-align: justify;" > <i class="fas fa-edit" style="float: right;"></i>تغير الاسم</a>
+       
+        <a class="dropdown-item">               
+                   <div class="dropdown">
+                     <i class="fas fa-copy" style="margin-right: 5px; float: right; "></i>
+                     
+                     <span style="text-align: right; margin-left:36px ;" >نسخ الى       <i class="fas fa-caret-left" style=" font-size: small; float: left; margin: auto; margin-top: 5px;"></i>  </span>
+                     <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%; text-align: justify; ">
+                       <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                       <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                       <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                     
+                     </div>
+                 
+                   </div> 
+         </a>
+        <a class="dropdown-item">               
+                   <div class="dropdown">
+                     <i class= "fas fa-file-export" style="margin-right: -12px; float: right; "></i>
+                     
+                     <span style="text-align: right; margin-left:36px; " >نقل الى       <i class="fas fa-caret-left" style=" font-size: small; float: left; margin: auto; margin-top: 5px;"></i>  </span>
+                     <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%; text-align: justify;">
+                       <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                       <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                       <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                     
+                     </div>
+                 
+                   </div> 
+         </a>
+
+          
+                 <div class="dropdown-divider"></div>
+                 <a class="dropdown-item" href="#" style="text-align: justify;" ><i class="fas fa-trash-alt" style="float: right;" ></i>إزالة</a>
+          </div>
+          <img class="card-img-top" src="./تصميم-2.jpg" alt="Card image cap" >
+          <div class="card-body" style="text-align: right;">
+            <a  class="card-title "  data-toggle="modal" data-target="#showpdfFileWord">  <i class="fa fa-file-word-o" aria-hidden="true"
+              style="  color:#664df5 ; font-size: 20px;"></i>
+              غلاف المشروع .pdf
+
+            </a>
+           </div>
+
+           
+          </li>
+          <li class="gridlist" style="display: inline-block; height: 210px;">
+        <div class="card" style="height: 100%;">
+    <i  class="fas fa-ellipsis-v" style=" position: absolute; margin-right: 85%;" id="dropdownMenuButton" data-toggle="dropdown"></i>
+
+ <div class="dropdown-menu" style="float: right;" >
+<a class="dropdown-item" href="#" style="text-align: justify;"> <i class="fas fa-eye" style="float: right;"></i>عرض </a>
+<a class="dropdown-item" href="#" style="text-align: justify;" > <i class="fas fa-cloud-download-alt" style="float: right;"></i>تنزيل</a>
+<a class="dropdown-item" href="#"  data-toggle="modal" data-target="#RenameFile" style="text-align: justify;" > <i class="fas fa-edit" style="float: right;"></i>تغير الاسم</a>
+
+<a class="dropdown-item">               
+          <div class="dropdown">
+            <i class="fas fa-copy" style="margin-right: 5px; float: right; "></i>
+            
+            <span style="text-align: right; margin-left:36px ;" >نسخ الى       <i class="fas fa-caret-left" style=" font-size: small; float: left; margin: auto; margin-top: 5px;"></i>  </span>
+            <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%; text-align: justify; ">
+              <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+              <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+              <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+            
+            </div>
+        
+          </div> 
+</a>
+<a class="dropdown-item">               
+          <div class="dropdown">
+            <i class= "fas fa-file-export" style="margin-right: -12px; float: right; "></i>
+            
+            <span style="text-align: right; margin-left:36px; " >نقل الى       <i class="fas fa-caret-left" style=" font-size: small; float: left; margin: auto; margin-top: 5px;"></i>  </span>
+            <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%; text-align: justify;">
+              <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+              <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+              <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+            
+            </div>
+        
+          </div> 
+</a>
+
+ 
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#" style="text-align: justify;" ><i class="fas fa-trash-alt" style="float: right;" ></i>إزالة</a>
+ </div>
+          <img class="card-img-top" src="./تصميم-2.jpg" alt="Card image cap" >
+          <div class="card-body" style="text-align: right;">
+            <a    class="card-title " data-toggle="modal" data-target="#showpdfFilepdf" >  <i class="fa fa-file-pdf-o" aria-hidden="true"
+              style="  color:#eb4638; font-size: 20px;"></i>
+              غلاف المشروع .pdf</a>
+
+            
+
+           </div>
+          </li>
+          <li  class="gridlist"style="display: inline-block; height: 210px;">
+        <div class="card"  style="height: 100%;">
+          <i  class="fas fa-ellipsis-v" style=" position: absolute; margin-right: 85%;" id="dropdownMenuButton" data-toggle="dropdown"></i>
+
+          <div class="dropdown-menu" style="float: right;" >
+        <a class="dropdown-item" href="#" style="text-align: justify;"> <i class="fas fa-eye" style="float: right;"></i>عرض </a>
+        <a class="dropdown-item" href="#" style="text-align: justify;" > <i class="fas fa-cloud-download-alt" style="float: right;"></i>تنزيل</a>
+        <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#RenameFile" style="text-align: justify;" > <i class="fas fa-edit" style="float: right;"></i>تغير الاسم</a>
+       
+        <a class="dropdown-item">               
+                   <div class="dropdown">
+                     <i class="fas fa-copy" style="margin-right: 5px; float: right; "></i>
+                     
+                     <span style="text-align: right; margin-left:36px ;" >نسخ الى       <i class="fas fa-caret-left" style=" font-size: small; float: left; margin: auto; margin-top: 5px;"></i>  </span>
+                     <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%; text-align: justify; ">
+                       <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                       <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                       <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                     
+                     </div>
+                 
+                   </div> 
+         </a>
+        <a class="dropdown-item">               
+                   <div class="dropdown">
+                     <i class= "fas fa-file-export" style="margin-right: -12px; float: right; "></i>
+                     
+                     <span style="text-align: right; margin-left:36px; " >نقل الى       <i class="fas fa-caret-left" style=" font-size: small; float: left; margin: auto; margin-top: 5px;"></i>  </span>
+                     <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%; text-align: justify;">
+                       <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                       <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                       <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                     
+                     </div>
+                 
+                   </div> 
+         </a>
+
+          
+                 <div class="dropdown-divider"></div>
+                 <a class="dropdown-item" href="#" style="text-align: justify;" ><i class="fas fa-trash-alt" style="float: right;" ></i>إزالة</a>
+          </div>
+          <img class="card-img-top" src="./تصميم-2.jpg" alt="Card image cap" style=" "> 
+          <div class="card-body" style="text-align: right;">
+            <a href="#"  class="card-title " data-toggle="modal" data-target="#showpdfFileXl" >  <i class="fa fa-file-excel-o" aria-hidden="true"
+              style="  color:#4fb685 ; font-size: 20px;"></i>
+              غلاف المشروع .xl</a>
+
+   
+           </div>
+          </li>
+          <li class="gridlist" style="display: inline-block; height: 210px;">
+        <div class="card" style="height: 100%;">
+          <i  class="fas fa-ellipsis-v" style=" position: absolute; margin-right: 85%;" id="dropdownMenuButton" data-toggle="dropdown"></i>
+
+          <div class="dropdown-menu" style="float: right;" >
+        <a class="dropdown-item" href="#" style="text-align: justify;"> <i class="fas fa-eye" style="float: right;"></i>عرض </a>
+        <a class="dropdown-item" href="#" style="text-align: justify;" > <i class="fas fa-cloud-download-alt" style="float: right;"></i>تنزيل</a>
+        <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#RenameFile" style="text-align: justify;" > <i class="fas fa-edit" style="float: right;"></i>تغير الاسم</a>
+       
+        <a class="dropdown-item">               
+                   <div class="dropdown">
+                     <i class="fas fa-copy" style="margin-right: 5px; float: right; "></i>
+                     
+                     <span style="text-align: right; margin-left:36px ;" >نسخ الى       <i class="fas fa-caret-left" style=" font-size: small; float: left; margin: auto; margin-top: 5px;"></i>  </span>
+                     <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%; text-align: justify; ">
+                       <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                       <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                       <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                     
+                     </div>
+                 
+                   </div> 
+         </a>
+        <a class="dropdown-item">               
+                   <div class="dropdown">
+                     <i class= "fas fa-file-export" style="margin-right: -12px; float: right; "></i>
+                     
+                     <span style="text-align: right; margin-left:36px; " >نقل الى       <i class="fas fa-caret-left" style=" font-size: small; float: left; margin: auto; margin-top: 5px;"></i>  </span>
+                     <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%; text-align: justify;">
+                       <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                       <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                       <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                     
+                     </div>
+                 
+                   </div> 
+         </a>
+
+          
+                 <div class="dropdown-divider"></div>
+                 <a class="dropdown-item" href="#" style="text-align: justify;" ><i class="fas fa-trash-alt" style="float: right;" ></i>إزالة</a>
+          </div>
+          <img class="card-img-top" src="./تصميم-2.jpg" alt="Card image cap" >
+          <div class="card-body" style="text-align: right;">
+            <a href="#"      class="card-title "data-toggle="modal" data-target="#showpdfFilePPT" >  <i class="fa fa-file-powerpoint-o" aria-hidden="true"
+              style="  color:#fd8456; font-size: 20px;"></i>
+              غلاف المشروع .ppt</a>
+         
+
+           </div>
+          </li>
+          <li class="gridlist" style="display: inline-block; height: 210px;">
+            <div class="card" style="height: 100%;">
+              <i  class="fas fa-ellipsis-v" style=" position: absolute; margin-right: 85%;" id="dropdownMenuButton" data-toggle="dropdown"></i>
+
+              <div class="dropdown-menu" style="float: right;" >
+            <a class="dropdown-item" href="#" style="text-align: justify;"> <i class="fas fa-eye" style="float: right;"></i>عرض </a>
+            <a class="dropdown-item" href="#" style="text-align: justify;" > <i class="fas fa-cloud-download-alt" style="float: right;"></i>تنزيل</a>
+            <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#RenameFile" style="text-align: justify;" > <i class="fas fa-edit" style="float: right;"></i>تغير الاسم</a>
+           
+            <a class="dropdown-item">               
+                       <div class="dropdown">
+                         <i class="fas fa-copy" style="margin-right: 5px; float: right; "></i>
+                         
+                         <span style="text-align: right; margin-left:36px ;" >نسخ الى       <i class="fas fa-caret-left" style=" font-size: small; float: left; margin: auto; margin-top: 5px;"></i>  </span>
+                         <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%; text-align: justify; ">
+                           <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                           <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                           <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                         
+                         </div>
+                     
+                       </div> 
+             </a>
+            <a class="dropdown-item">               
+                       <div class="dropdown">
+                         <i class= "fas fa-file-export" style="margin-right: -12px; float: right; "></i>
+                         
+                         <span style="text-align: right; margin-left:36px; " >نقل الى       <i class="fas fa-caret-left" style=" font-size: small; float: left; margin: auto; margin-top: 5px;"></i>  </span>
+                         <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%; text-align: justify;">
+                           <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                           <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                           <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                         
+                         </div>
+                     
+                       </div> 
+             </a>
+    
+              
+                     <div class="dropdown-divider"></div>
+                     <a class="dropdown-item" href="#" style="text-align: justify;" ><i class="fas fa-trash-alt" style="float: right;" ></i>إزالة</a>
+              </div>
+              <img class="card-img-top" src="./تصميم-2.jpg" alt="Card image cap" style=" ">
+              <div class="card-body" style="text-align: right;">
+                <a href="#"   class="card-title " data-toggle="modal" data-target="#showpdfFilepdf">  <i class="fa fa-file-pdf-o" aria-hidden="true"
+                  style="  color:#eb4638; font-size: 20px;"></i>
+                  غلاف المشروع .pdf</a>
+    
+                
+
+               </div>
+          </li>
+          <li  class="gridlist" style="display: inline-block; height: 210px;">
+            <div class="card" style="height: 100%;">
+              <i  class="fas fa-ellipsis-v" style=" position: absolute; margin-right: 85%;" id="dropdownMenuButton" data-toggle="dropdown"></i>
+
+              <div class="dropdown-menu" style="float: right;" >
+            <a class="dropdown-item" href="#" style="text-align: justify;"> <i class="fas fa-eye" style="float: right;"></i>عرض </a>
+            <a class="dropdown-item" href="#" style="text-align: justify;" > <i class="fas fa-cloud-download-alt" style="float: right;"></i>تنزيل</a>
+            <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#RenameFile" style="text-align: justify;" > <i class="fas fa-edit" style="float: right;"></i>تغير الاسم</a>
+           
+            <a class="dropdown-item">               
+                       <div class="dropdown">
+                         <i class="fas fa-copy" style="margin-right: 5px; float: right; "></i>
+                         
+                         <span style="text-align: right; margin-left:36px ;" >نسخ الى       <i class="fas fa-caret-left" style=" font-size: small; float: left; margin: auto; margin-top: 5px;"></i>  </span>
+                         <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%; text-align: justify; ">
+                           <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                           <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                           <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                         
+                         </div>
+                     
+                       </div> 
+             </a>
+            <a class="dropdown-item">               
+                       <div class="dropdown">
+                         <i class= "fas fa-file-export" style="margin-right: -12px; float: right; "></i>
+                         
+                         <span style="text-align: right; margin-left:36px; " >نقل الى       <i class="fas fa-caret-left" style=" font-size: small; float: left; margin: auto; margin-top: 5px;"></i>  </span>
+                         <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%; text-align: justify;">
+                           <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                           <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                           <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                         
+                         </div>
+                     
+                       </div> 
+             </a>
+    
+              
+                     <div class="dropdown-divider"></div>
+                     <a class="dropdown-item" href="#" style="text-align: justify;" ><i class="fas fa-trash-alt" style="float: right;" ></i>إزالة</a>
+              </div>
+              <img class="card-img-top" src="./تصميم-2.jpg" alt="Card image cap" >
+
+              <div class="card-body" style="text-align: right;">
+                <a href="#"   class="card-title " data-toggle="modal" data-target="#showpdfFilepdf">  <i class="fa fa-file-pdf-o" aria-hidden="true"
+                  style="  color:#eb4638; font-size: 20px;"  ></i>
+                  غلاف المشروع .pdf</a>
+    
+                
+
+               </div>
+          </li>
+          <li class="gridlist" style="display: inline-block; height: 210px;">
+            <div class="card"  style="height: 100%;">
+              <i  class="fas fa-ellipsis-v" style=" position: absolute; margin-right: 85%;" id="dropdownMenuButton" data-toggle="dropdown"></i>
+
+              <div class="dropdown-menu" style="float: right;" >
+            <a class="dropdown-item" href="#" style="text-align: justify;"> <i class="fas fa-eye" style="float: right;"></i>عرض </a>
+            <a class="dropdown-item" href="#" style="text-align: justify;" > <i class="fas fa-cloud-download-alt" style="float: right;"></i>تنزيل</a>
+            <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#RenameFile" style="text-align: justify;" > <i class="fas fa-edit" style="float: right;"></i>تغير الاسم</a>
+           
+            <a class="dropdown-item">               
+                       <div class="dropdown">
+                         <i class="fas fa-copy" style="margin-right: 5px; float: right; "></i>
+                         
+                         <span style="text-align: right; margin-left:36px ;" >نسخ الى       <i class="fas fa-caret-left" style=" font-size: small; float: left; margin: auto; margin-top: 5px;"></i>  </span>
+                         <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%; text-align: justify; ">
+                           <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                           <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                           <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                         
+                         </div>
+                     
+                       </div> 
+             </a>
+            <a class="dropdown-item">               
+                       <div class="dropdown">
+                         <i class= "fas fa-file-export" style="margin-right: -12px; float: right; "></i>
+                         
+                         <span style="text-align: right; margin-left:36px; " >نقل الى       <i class="fas fa-caret-left" style=" font-size: small; float: left; margin: auto; margin-top: 5px;"></i>  </span>
+                         <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%; text-align: justify;">
+                           <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                           <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                           <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                         
+                         </div>
+                     
+                       </div> 
+             </a>
+    
+              
+                     <div class="dropdown-divider"></div>
+                     <a class="dropdown-item" href="#" style="text-align: justify;" ><i class="fas fa-trash-alt" style="float: right;" ></i>إزالة</a>
+              </div>
+              <img class="card-img-top" src="./تصميم-2.jpg" alt="Card image cap" >
+
+              <div class="card-body" style="text-align: right;">
+                <a href="#"  class="card-title " data-toggle="modal" data-target="#showpdfFileXl" >  <i class="fa fa-file-excel-o" aria-hidden="true"
+                  style="  color:#4fb685 ; font-size: 20px;"></i>
+                  غلاف المشروع .xl</a>
+
+    
+
+               </div>
+          </li>
+
+
+          
+    
+      </ul>
+    </div>
+
+    <div class="alert footeralert"  >
+      <span class="closebtn" onclick="this.parentElement.style.display='none';" 
+      style="float: right; cursor: pointer; font-size: 30px;">&times;
+        <strong>الاعلان هنا </strong> 
+      </span> 
+     
+    
+
+    </div>
+
+
+    </div>
+    
+    
+    </div>
+    
+<!-- griiiiiiiiiiiiiiiiiiiiiiiiiiiidShow------------------------------ -->
+<!-- LiiiiiiiiiiiiiiiiiiiiiiiiiiiistShow------------------------------ -->
+
+    <div class="container" class="listshow" id="listt" style="height: 80px;  max-width: 90%; float: right;margin-right: 30px; display: none;">
+      <div class="row" style=" padding: 10px; border-bottom: 1px solid rgba(221, 218, 218, 0.568);">
+      <div class="col-6" style="text-align: right; font-size:15px ; font-weight: 700;">
+          <a href="#"><span > الملفات</span></a>
+          <i class="fa fa-angle-left" style="font-size: 15px; margin-right: 5px ; cursor: pointer;" ></i>
+         <a href="#"> <span > 111</span></a>
+          <i class="fa fa-angle-down" style="font-size: 15px; margin-right: 5px ; cursor: pointer;" ></i>
+      </div>
+      <div class="col-6"> <i class=" fas fa-border-all " onclick="pageOne()" style="cursor: pointer;"></i></div>
+    
+ 
+      </div>
+
+      <div class="row">
+
+
+        <table class=" table listsholder fileTable" style="text-align: right; ">
+          <thead>
+            <tr >
+             
+              <th class="name" style= >الاسم <i class="fas fa-arrow-up" style="font-size: 12px; margin-right: 10px; cursor: pointer;"></i> </th>
+            
+              <th style="text-align: center; width:22% ;" >تاريخ الانشاء</th>
+              <th style=" text-align: center;width:15% ;"  >حجم الملف </th>
+              <th style="text-align: center; width:11%" >عدد التحميلات</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="name">
+            
+              <td class="name" >
+                 <i class="fas fa-folder fa-flip-horizontal" style="font-size: 20px;"> </i> 
+                  <a href="#"><span>  ارقام الصفوف</span>  </a> 
+                  <i  class="fas fa-ellipsis-v" style="float: left;" id="dropdownMenuButton" data-toggle="dropdown"></i>
+              
+              
+               
+                  <div class="dropdown-menu" style="text-align: right;">
+                    <a class="dropdown-item" href="#"> <i class="fas fa-eye"></i>عرض </a>
+                               <a class="dropdown-item" href="#"> <i class="fas fa-cloud-download-alt"></i>تنزيل</a>
+              <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#RenameFile"> <i class="fas fa-edit"></i>تغير الاسم</a>
+                    <a class="dropdown-item">
+                   
+  
+                 
+                      <div class="dropdown">
+                        <i class="fas fa-copy" style="margin-right: 3px;"></i>
+                        
+                        <span class="">نسخ الى       <i class="fas fa-caret-left" style="margin-right: 28%; font-size: small;"></i>  </span>
+                        <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%;">
+                          <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                          <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                          <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                        
+                        </div>
+                    
+                      </div>
+                   
+                    </a>
+                    <a class="dropdown-item">
+                   
+  
+                 
+                      <div class="dropdown">
+                        <i class="fas fa-file-export"></i>
+                        
+                        <span class=""><span>نقل الى  </span>     <i class="fas fa-caret-left" style="margin-right: 30%; font-size: small;"></i>  </span>
+                        <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%;">
+                          <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                          <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                          <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                        
+                        </div>
+                    
+                      </div>
+                   
+                    </a>
+             
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i>إزالة</a>
+                  </div>
+                </td>
+                 <td class="dataTime" style="text-align: center;">03:45</td>
+                 <td class="dataSize" style="font-weight: 900; text-align: center;">_</td>
+             
+              <td class="dataDownLoad" style="text-align: center;">45</td>
+            </tr>
+            <tr class="name">
+            
+              <td class="name" >
+                 <i class="fas fa-folder fa-flip-horizontal" style="font-size: 20px;"> </i>  <a href="#" style="font-size: 15px;"><span >  ارقام الصفوف</span>  </a> 
+                 <i  class="fas fa-ellipsis-v" style="float: left;" id="dropdownMenuButton" data-toggle="dropdown"></i>
+              
+              
+               
+                 <div class="dropdown-menu" style="text-align: right;">
+                   <a class="dropdown-item" href="#"> <i class="fas fa-eye"></i>عرض </a>
+                              <a class="dropdown-item" href="#"> <i class="fas fa-cloud-download-alt"></i>تنزيل</a>
+             <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#RenameFile"> <i class="fas fa-edit"></i>تغير الاسم</a>
+                   <a class="dropdown-item">
+                  
+ 
+                
+                     <div class="dropdown">
+                       <i class="fas fa-copy" style="margin-right: 3px;"></i>
+                       
+                       <span class="">نسخ الى       <i class="fas fa-caret-left" style="margin-right: 28%; font-size: small;"></i>  </span>
+                       <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%;">
+                         <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                         <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                         <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                       
+                       </div>
+                   
+                     </div>
+                  
+                   </a>
+                   <a class="dropdown-item">
+                  
+ 
+                
+                     <div class="dropdown">
+                       <i class="fas fa-file-export"></i>
+                       
+                       <span class=""><span>نقل الى  </span>     <i class="fas fa-caret-left" style="margin-right: 30%; font-size: small;"></i>  </span>
+                       <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%;">
+                         <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                         <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                         <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                       
+                       </div>
+                   
+                     </div>
+                  
+                   </a>
+            
+                   <div class="dropdown-divider"></div>
+                   <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i>إزالة</a>
+                 </div>
+                </td>
+                 <td class="dataTime" style="text-align: center;">03:45 AM</td>
+                 <td class="dataSize" style="font-weight: 900; text-align: center;">_</td>
+             
+              <td class="dataDownLoad" style="text-align: center;">4</td>
+            </tr>
+            <tr class="name">
+            
+              <td class="name" >
+                 <i class="fas fa-folder fa-flip-horizontal" style="font-size: 20px;"> </i>  <a href="#"><span>  ارقام الصفوف</span>  
+                
+                </a>
+              
+                <i  class="fas fa-ellipsis-v" style="float: left;" id="dropdownMenuButton" data-toggle="dropdown"></i>
+              
+              
+               
+                <div class="dropdown-menu" style="text-align: right;">
+                  <a class="dropdown-item" href="#"> <i class="fas fa-eye"></i>عرض </a>
+                             <a class="dropdown-item" href="#"> <i class="fas fa-cloud-download-alt"></i>تنزيل</a>
+            <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#RenameFile"> <i class="fas fa-edit"></i>تغير الاسم</a>
+                  <a class="dropdown-item">
+                 
+
+               
+                    <div class="dropdown">
+                      <i class="fas fa-copy" style="margin-right: 3px;"></i>
+                      
+                      <span class="">نسخ الى       <i class="fas fa-caret-left" style="margin-right: 28%; font-size: small;"></i>  </span>
+                      <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%;">
+                        <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                        <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                        <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                      
+                      </div>
+                  
+                    </div>
+                 
+                  </a>
+                  <a class="dropdown-item">
+                 
+
+               
+                    <div class="dropdown">
+                      <i class="fas fa-file-export"></i>
+                      
+                      <span class=""><span>نقل الى  </span>     <i class="fas fa-caret-left" style="margin-right: 30%; font-size: small;"></i>  </span>
+                      <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%;">
+                        <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                        <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                        <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                      
+                      </div>
+                  
+                    </div>
+                 
+                  </a>
+           
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i>إزالة</a>
+                </div>
+            </td>
+                 <td class="dataTime" style="text-align: center;">03:45 PM</td>
+                 <td class="dataSize" style="font-weight: 900; text-align: center;">_</td>
+             
+              <td class="dataDownLoad" style="text-align: center;">4</td>
+            </tr >
+            <tr class="name" >
+              <td  class="name"  data-toggle="modal" data-target="#showpdfFileWord" ><i class="fa fa-file-word-o" aria-hidden="true"
+                style=" color:#664df5 ;  font-size: 20px; " ></i>
+            
+                <span  class="card-title " >غلاف المشروع .docx 
+           
+                </span>
+                <i  class="fas fa-ellipsis-v" style="float: left;" id="dropdownMenuButton" data-toggle="dropdown"></i>
+              
+              
+               
+                <div class="dropdown-menu" style="text-align: right;">
+                  <a class="dropdown-item" href="#"> <i class="fas fa-eye"></i>عرض </a>
+                             <a class="dropdown-item" href="#"> <i class="fas fa-cloud-download-alt"></i>تنزيل</a>
+            <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#RenameFile"> <i class="fas fa-edit"></i>تغير الاسم</a>
+                  <a class="dropdown-item">
+                 
+
+               
+                    <div class="dropdown">
+                      <i class="fas fa-copy" style="margin-right: 3px;"></i>
+                      
+                      <span class="">نسخ الى       <i class="fas fa-caret-left" style="margin-right: 28%; font-size: small;"></i>  </span>
+                      <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%;">
+                        <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                        <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                        <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                      
+                      </div>
+                  
+                    </div>
+                 
+                  </a>
+                  <a class="dropdown-item">
+                 
+
+               
+                    <div class="dropdown">
+                      <i class="fas fa-file-export"></i>
+                      
+                      <span class=""><span>نقل الى  </span>     <i class="fas fa-caret-left" style="margin-right: 30%; font-size: small;"></i>  </span>
+                      <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%;">
+                        <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                        <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                        <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                      
+                      </div>
+                  
+                    </div>
+                 
+                  </a>
+           
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i>إزالة</a>
+                </div>
+            
+              </td>
+              <td class="dataTime datee" style="  text-align: center;">03:45</td>
+              <td class="dataSize datee"> 151 KB</td>
+             
+              <td class="dataDownLoad datee">9</td>
+              
+            </tr>   
+            <tr class="name">
+            
+              <td class="name" > <i class="fa fa-file-pdf-o" aria-hidden="true"
+                style="color:#eb4638 ;  font-size: 20px;"  ></i>
+              <span  class="card-title " data-toggle="modal" data-target="#showpdfFilepdf">  غلاف المشروع .pdf</span> 
+                 <i  class="fas fa-ellipsis-v" style="float: left;" ></i>
+                     
+                <div class="dropdown-menu" style="text-align: right;">
+                <a class="dropdown-item" href="#"> <i class="fas fa-eye"></i>عرض </a>
+                           <a class="dropdown-item" href="#"> <i class="fas fa-cloud-download-alt"></i>تنزيل</a>
+            <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#RenameFile"> <i class="fas fa-edit"></i>تغير الاسم</a>
+                <a class="dropdown-item">
+                 
+
+               
+                  <div class="dropdown">
+                    <i class="fas fa-copy" style="margin-right: 3px;"></i>
+                    
+                    <span class="">نسخ الى       <i class="fas fa-caret-left" style="margin-right: 28%; font-size: small;"></i>  </span>
+                    <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%;">
+                      <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                      <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                      <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                    
+                    </div>
+                
+                  </div>
+               
+                </a>
+                <a class="dropdown-item">
+                 
+
+               
+                  <div class="dropdown">
+                    <i class="fas fa-file-export"></i>
+                    
+                    <span class=""><span>نقل الى  </span>     <i class="fas fa-caret-left" style="margin-right: 30%; font-size: small;"></i>  </span>
+                    <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%;">
+                      <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                      <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                      <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                    
+                    </div>
+                
+                  </div>
+               
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i>إزالة</a>
+              </div>
+            
+
+            </td>
+            <td class="dataTime datee" >03:45</td>
+              <td class="dataSize datee"> 151 KB</td>
+            
+              <td class="dataDownLoad datee">42</td>
+            </tr>    
+            <tr class="name">
+            
+              <td class="name" >   <i class="fa fa-file-excel-o" aria-hidden="true"
+                style=" color:#4fb685 ;  font-size: 20px;" ></i>
+               <span   class="card-title " data-toggle="modal" data-target="#showpdfFileXl"> غلاف المشروع .xl</span>
+               <i  class="fas fa-ellipsis-v" style="float: left;" id="dropdownMenuButton2" data-toggle="dropdown"></i>
+             
+               <div class="dropdown-menu" style="text-align: right;">
+                 <a class="dropdown-item" href="#"> <i class="fas fa-eye"></i>عرض </a>
+                            <a class="dropdown-item" href="#"> <i class="fas fa-cloud-download-alt"></i>تنزيل</a>
+            <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#RenameFile"> <i class="fas fa-edit"></i>تغير الاسم</a>
+                 <a class="dropdown-item">
+                 
+
+               
+                  <div class="dropdown">
+                    <i class="fas fa-copy" style="margin-right: 3px;"></i>
+                    
+                    <span class="">نسخ الى       <i class="fas fa-caret-left" style="margin-right: 28%; font-size: small;"></i>  </span>
+                    <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%;">
+                      <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                      <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                      <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                    
+                    </div>
+                
+                  </div>
+               
+                </a>
+                 <a class="dropdown-item">
+                 
+
+               
+                  <div class="dropdown">
+                    <i class="fas fa-file-export"></i>
+                    
+                    <span class=""><span>نقل الى  </span>     <i class="fas fa-caret-left" style="margin-right: 30%; font-size: small;"></i>  </span>
+                    <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%;">
+                      <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                      <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                      <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                    
+                    </div>
+                
+                  </div>
+               
+                </a>
+                 <div class="dropdown-divider"></div>
+                 <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i>إزالة</a>
+               </div>
+              </td>
+              <td class="dataTime datee">03:45</td>
+              <td class="dataSize datee"> 151 KB</td>
+            
+              <td class="dataDownLoad datee" style="font-weight: 900;">_</td>
+            </tr>
+            <tr class="name">
+            
+              <td class="name" > <i class="fa fa-file-powerpoint-o fa-x" aria-hidden="true"
+                style=" color:#fd8456; font-size: 20px;" ></i>
+              <span style="font-weight: 700;" class="card-title " data-toggle="modal" data-target="#showpdfFilePPT" >  غلاف المشروع .ppt</span>
+              <i  class="fas fa-ellipsis-v" style="float: left;" id="dropdownMenuButton3" data-toggle="dropdown"></i>
+              <div class="dropdown-menu" style="text-align: right;">
+                <a class="dropdown-item" href="#"> <i class="fas fa-eye"></i>عرض </a>
+                           <a class="dropdown-item" href="#"> <i class="fas fa-cloud-download-alt"></i>تنزيل</a>
+            <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#RenameFile"> <i class="fas fa-edit"></i>تغير الاسم</a>
+                <a class="dropdown-item">
+                 
+
+               
+                  <div class="dropdown">
+                    <i class="fas fa-copy" style="margin-right: 3px;"></i>
+                    
+                    <span class="">نسخ الى       <i class="fas fa-caret-left" style="margin-right: 28%; font-size: small;"></i>  </span>
+                    <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%;">
+                      <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                      <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                      <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                    
+                    </div>
+                
+                  </div>
+               
+                </a>
+                <a class="dropdown-item">
+                 
+
+               
+                  <div class="dropdown">
+                    <i class="fas fa-file-export"></i>
+                    
+                    <span class=""><span>نقل الى  </span>     <i class="fas fa-caret-left" style="margin-right: 30%; font-size: small;"></i>  </span>
+                    <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%;">
+                      <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                      <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                      <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                    
+                    </div>
+                
+                  </div>
+               
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i>إزالة</a>
+              </div>
+            </td>
+            <td class="dataTime datee" style="direction: ltr;" >20   Sep   2020</td>
+              <td class="dataSize datee"> 151 KB</td>
+            
+              <td class="dataDownLoad datee">100</td>
+            </tr>
+            <tr class="name">
+            
+              <td class="name" >   <i class="fa fa-file-excel-o" aria-hidden="true"
+                style=" color:#4fb685 ;  font-size: 20px;" ></i>
+               <span   class="card-title " data-toggle="modal" data-target="#showpdfFileXl"> غلاف المشروع .xl</span>
+               <i  class="fas fa-ellipsis-v" style="float: left;" id="dropdownMenuButton4" data-toggle="dropdown"></i>
+             
+               <div class="dropdown-menu" style="text-align: right;">
+                 <a class="dropdown-item" href="#"> <i class="fas fa-eye"></i>عرض </a>
+                            <a class="dropdown-item" href="#"> <i class="fas fa-cloud-download-alt"></i>تنزيل</a>
+            <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#RenameFile"> <i class="fas fa-edit"></i>تغير الاسم</a>
+                 <a class="dropdown-item">
+                 
+
+               
+                  <div class="dropdown">
+                    <i class="fas fa-copy" style="margin-right: 3px;"></i>
+                    
+                    <span class="">نسخ الى       <i class="fas fa-caret-left" style="margin-right: 28%; font-size: small;"></i>  </span>
+                    <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%;">
+                      <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                      <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                      <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                    
+                    </div>
+                
+                  </div>
+               
+                </a>
+                 <a class="dropdown-item">
+                 
+
+               
+                  <div class="dropdown">
+                    <i class="fas fa-file-export"></i>
+                    
+                    <span class=""><span>نقل الى  </span>     <i class="fas fa-caret-left" style="margin-right: 30%; font-size: small;"></i>  </span>
+                    <div class="dropdown-content " style="margin-right: 78%; margin-top:-40%;">
+                      <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الاول </a>
+                      <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثاني </a>
+                      <a href="#"> <i class="fas fa-folder fa-flip-horizontal" style="font-size: larger; color: #7b7a7a;"> </i> المجلد الثالث </a>
+                    
+                    </div>
+                
+                  </div>
+               
+                </a>
+                 <div class="dropdown-divider"></div>
+                 <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i>إزالة</a>
+               </div>
+              </td>
+              <td class=" dataTime datee" style="direction: ltr;" >20   Nov   2020</td>
+              <td class=" dataSize sizee"> 151 KB</td>
+            
+              <td class=" dataDownLoad datee">90</td>
+            </tr>
+
+         
+
+          </tbody>
+
+  
+   
+        </table>
+
+
+
+  
+     <div class="alert footeralert footeralert2 "  >
+        <span class="closebtn" onclick="this.parentElement.style.display='none';" 
+        style="float: right; cursor: pointer; font-size: 30px;">&times;
+          <strong>الاعلان هنا </strong> 
+        </span> 
+       
+      
+  
+      </div>
+  
+ 
+      </div>
+
+ 
+      </div>
+ <!-- LiiiiiiiiiiiiiiiiiiiiiiiiiiiistShow------------------------------ -->   
+    
+    
+ </div>
+
+  <!-- booooooooooooooooooooooooooooooooody------------------------------ -->     
+  
+</div>
+
+   
+
+
+
+    
+  
+    
+ 
+<!-- Button trigger modal  upload image-->
+<div class="modal fade" id="exampleModalUploadFile"
+ tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-body">
+    
+   
+          <form action="/upload-target" class="dropzone" id="drop" style="max-width: 100%;" >
+              <div class="dz-message needsclick" style="margin-top: 0px;" >
+                <i class="fas fa-cloud-upload-alt fa-3x" aria-hidden="true" style="line-height: -80px;">
+                    <h4>    اسحب المجلدات الى هنا</h4>
+                    <h6>او انقر للاختيار يدويا </h6>
+                </i>
+         
+                </div>
+              </form>
+     
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModalUploadFile2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-body">
+    
+   
+          <form action="/upload-target" class="dropzone" id="drop" style="max-width: 100%;" >
+              <div class="dz-message needsclick" style="margin-top: 0px;" >
+                <i class="fas fa-cloud-upload-alt fa-3x" aria-hidden="true" style="line-height: -80px;">
+                    <h4>    اسحب الملفات الى هنا</h4>
+                    <h6>او انقر للاختيار يدويا </h6>
+                </i>
+         
+                </div>
+              </form>
+     
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Modal to input new file and creat it  -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style=" outline-width: 0;">مجلد جديد</h5>
+        <button type="button" class="close" data-dismiss="modal" 
+        aria-label="Close" style=" left: 0; outline-width: 0;" >
+          <span class="x" aria-hidden="true" >&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <input type="text" style="min-width: 100%; float: right; padding-right: 10px; padding: 5px;" placeholder="ادخل اسم المجلد .. ">
+    
+   
+     
+      </div>
+      <div class="modal-footer">
+           <button type="button" class="" data-dismiss="modal"  >إلغاء</button>
+           <button type="button" class="creat" data-dismiss="modal">انشاء</button>
+        
+   
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal to rename  file and folder  -->
+<div class="modal fade" id="RenameFile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style=" outline-width: 0;">تغير الاسم</h5>
+        <button type="button" class="close" data-dismiss="modal" 
+        aria-label="Close" style=" left: 0; outline-width: 0;" >
+          <span class="x" aria-hidden="true" >&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <input type="text" style="min-width: 100%; float: right; padding-right: 10px; padding: 5px;" placeholder="ادخل الاسم الجديد .. ">
+    
+   
+     
+      </div>
+      <div class="modal-footer">
+           <button type="button" class="" data-dismiss="modal"  >إلغاء</button>
+           <button type="button" class="creat" data-dismiss="modal">تغير</button>
+        
+   
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+
+<!-- Modal to showw pdf  file   -->
+
+<div class="modal fade" id="showpdfFilepdf" role="dialog" >
+  <div class="modal-dialog"style="min-width:100%; " >
+        <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" 
+        aria-label="Close" style=" left: 0; outline-width: 0;" >
+          <span class="x" aria-hidden="true" >&times;</span>
+        </button>
+      </div>
+
+        <div class="modal-body" style=" width: 100%; height: 700px; ">
+          <iframe src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+          width="100%" height=""
+           style="position: absolute;bottom: 0px;right: 0px;border: none;margin: 0;padding: 0;overflow: hidden;z-index: 3;height: 100%;"></iframe>
+     
+
+      </div>
+    </div>
+    </div>
+  </div>
+<!-- Modal -->
+<!-- Modal to showw pdf  file   -->
+
+<div class="modal fade" id="showpdfFileWord" role="dialog" >
+  <div class="modal-dialog"style="min-width:100%; " >
+        <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" 
+        aria-label="Close" style=" left: 0; outline-width: 0;" >
+          <span class="x" aria-hidden="true" >&times;</span>
+        </button>
+      </div>
+
+        <div class="modal-body" style=" width: 100%; height: 700px; ">
+          <iframe src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+          width="100%" height=""
+           style="position: absolute;bottom: 0px;right: 0px;border: none;margin: 0;padding: 0;overflow: hidden;z-index: 3;height: 100%;"></iframe>
+     
+
+      </div>
+    </div>
+    </div>
+  </div>
+<!-- Modal -->
+<!-- Modal to showw pdf  file   -->
+
+<div class="modal fade" id="showpdfFileXl" role="dialog" >
+  <div class="modal-dialog"style="min-width:100%; " >
+        <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" 
+        aria-label="Close" style=" left: 0; outline-width: 0;" >
+          <span class="x" aria-hidden="true" >&times;</span>
+        </button>
+      </div>
+
+        <div class="modal-body" style=" width: 100%; height: 700px; ">
+          <iframe src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+          width="100%" height=""
+           style="position: absolute;bottom: 0px;right: 0px;border: none;margin: 0;padding: 0;overflow: hidden;z-index: 3;height: 100%;"></iframe>
+     
+
+      </div>
+    </div>
+    </div>
+  </div>
+<!-- Modal -->
+
+<!-- Modal to showw pdf  file   -->
+
+<div class="modal fade" id="showpdfFilePPT" role="dialog" >
+  <div class="modal-dialog"style="min-width:100%; " >
+        <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" 
+        aria-label="Close" style=" left: 0; outline-width: 0;" >
+          <span class="x" aria-hidden="true" >&times;</span>
+        </button>
+      </div>
+
+        <div class="modal-body" style=" width: 100%; height: 700px; ">
+          <iframe src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+          width="100%" height=""
+           style="position: absolute;bottom: 0px;right: 0px;border: none;margin: 0;padding: 0;overflow: hidden;z-index: 3;height: 100%;"></iframe>
+     
+
+      </div>
+    </div>
+    </div>
+  </div>
+  
+<!-- Modal -->
+
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> -->
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+    <script src="./new.js"></script>
+
+
+
+    
+</body>
+</html>
